@@ -8,6 +8,7 @@ function myFilter(arr, callback) {
       filtered.push(arr[i])
     }
   }
+
   return filtered
 }
 
@@ -16,7 +17,10 @@ function myFilter(arr, callback) {
 function myMap(arr, callback) {
   const mapped = []
   
-  for(let i = 0; i < arr.length; i++) mapped.push(callback(arr[i], i, arr))
+  for(let i = 0; i < arr.length; i++) {
+    mapped.push(callback(arr[i], i, arr));
+  }
+
   return mapped
 }
 
@@ -28,5 +32,6 @@ function myReduce(arr, callback, initial) {
   for(let i = 0; i < arr.length; i++) {
       accum = callback(accum, arr[i], i, arr);
   }
+  
   return accum;
 }
