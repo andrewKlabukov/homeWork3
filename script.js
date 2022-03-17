@@ -1,37 +1,35 @@
 // Задание 1 метод filter
 
-function myFilter(arr, callback) {
+function myFilter(arr, callback, thisArg) {
   const filtered = [];
-  
-  for(let i = 0; i < arr.length; i++) {
-    if(callback(arr[i], i, arr)) {
-      filtered.push(arr[i])
+
+  for (let i = 0; i < arr.length; i++) {
+    const callbackThis = callback.call(thisArg, arr[i], i, arr);
+
+    if (callbackThis) {
+      filtered.push(arr[i]);
     }
   }
 
-  return filtered
+  return filtered;
 }
 
-// Задание 2 метод map
+// Задание 2 метод forEach
 
-function myMap(arr, callback) {
-  const mapped = []
-  
-  for(let i = 0; i < arr.length; i++) {
-    mapped.push(callback(arr[i], i, arr));
+function myForEach(arr, callback, thisArg) {
+  for (let i = 0; i < arr.length; i++) {
+    callback.call(thisArg, arr[i], i, arr);
   }
-
-  return mapped
 }
 
 // Задание 3 метод reduce
 
 function myReduce(arr, callback, initial) {
   let accum = initial;
-  
-  for(let i = 0; i < arr.length; i++) {
-      accum = callback(accum, arr[i], i, arr);
+
+  for (let i = 0; i < arr.length; i++) {
+    accum = callback.call(null, accum, arr[i], i, arr);
   }
-  
+
   return accum;
 }
