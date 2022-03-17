@@ -28,7 +28,7 @@ function myReduce(arr, callback, initial) {
   let accum = initial;
 
   for (let i = 0; i < arr.length; i++) {
-    accum = callback.call(null, accum, arr[i], i, arr);
+    accum = callback(accum, arr[i], i, arr);
   }
 
   return accum;
